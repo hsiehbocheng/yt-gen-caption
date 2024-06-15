@@ -7,7 +7,7 @@ class Pipeline:
         self.steps = steps
 
     def run(self, input_kwargs):
-        temp_data = None
+        temp_data = {}
         for step in self.steps:
             try:
                 temp_data = step.process(input_kwargs, temp_data)

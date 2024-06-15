@@ -1,7 +1,7 @@
 import argparse
-from faster_whisper import WhisperModel
-from pipeline.steps.download_audio import DownloadAudio
 from pipeline.pipeline import Pipeline
+from pipeline.steps.download_audio import DownloadAudio
+from pipeline.steps.gen_caption import GenCaption
 
 
 parser = argparse.ArgumentParser(
@@ -20,7 +20,8 @@ input_kwargs = {
 
 def main():
     steps = [
-        DownloadAudio()
+        DownloadAudio(),
+        GenCaption(),
     ]
     pipeline = Pipeline(steps)
     pipeline.run(input_kwargs)
