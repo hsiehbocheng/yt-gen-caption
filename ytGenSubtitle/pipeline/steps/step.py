@@ -6,7 +6,7 @@ class Step(ABC):
         pass
 
     @abstractmethod
-    def process(self, input_kwargs):
+    def process(self, input_kwargs, temp_data):
         pass
 
 

@@ -6,7 +6,7 @@ from pipeline.pipeline import Pipeline
 
 parser = argparse.ArgumentParser(
     description='Generate subtitles for a YouTube video.')
-parser.add_argument("vurl",
+parser.add_argument("-vurl",
                     type=str,
                     help="YouTube video URL")
 

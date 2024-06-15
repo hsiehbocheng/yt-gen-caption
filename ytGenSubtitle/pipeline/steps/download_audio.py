@@ -3,10 +3,8 @@ from yt_dlp import YoutubeDL
 
 
 class DownloadAudio(Step):
-    def process(self, input_kwargs):
-        self.download_audio(input_kwargs['urls'])
-
-    def download_audio(self, urls):
+    def process(self, input_kwargs, temp_data=None):
+        urls = input_kwargs['urls']
         ydl_opts = {
             'format': 'bestaudio',
             'outtmpl': '%(title)s',
