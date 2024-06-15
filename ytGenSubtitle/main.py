@@ -1,18 +1,34 @@
-from yt_dlp import YoutubeDL
+import argparse
 from faster_whisper import WhisperModel
+from steps.download_audio import DownloadAudio
 
-urls = ['https://www.youtube.com/watch?v=4kzl1b5hsgg']
-ydl_opts = {
-    'format': 'bestaudio',
-    'outtmpl': '%(title)s',
-    # ℹ️ See help(yt_dlp.postprocessor) for a list of available Postprocessors and their arguments
-    'postprocessors': [{  # Extract audio using ffmpeg
-        'key': 'FFmpegExtractAudio',
-        'preferredcodec': 'mp3',
-    }]
+
+parser = argparse.ArgumentParser(
+    description='Generate subtitles for a YouTube video.')
+parser.add_argument("-vurl",
+                    default=None,
+                    type=str,
+                    help="YouTube video URL",
+                    nargs="?")
+
+args = parser.parse_args()
+urls = []
+if args.vurl:
+    urls.append(args.vurl)
+else:
+    url = input("Enter the YouTube video URL: ")
+    urls.append(url)
+
+input_kwargs = {
+    "urls": urls
 }
 
-with YoutubeDL(ydl_opts) as ydl:
-    info_dict = ydl.extract_info(urls[0], download=False)
-    filename = ydl.prepare_filename(info_dict).replace('.webm', '.mp3').replace('.mp4', '.mp3')
-    ydl.download(urls)
+steps = [
+    DownloadAudio()
+]
+
+for step in steps:
+    try:
+        step.process(input_kwargs)
+    except:
+        print("Error occurred in step: ", step)
