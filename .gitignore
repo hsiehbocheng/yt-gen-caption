@@ -469,3 +469,8 @@ FodyWeavers.xsd
 
 venv/
 .env
+*.mp3
+*.webm
+*.mov
+*.m4a
+*.mp4
