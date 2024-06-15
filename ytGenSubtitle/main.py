@@ -1,34 +1,30 @@
 import argparse
 from faster_whisper import WhisperModel
-from steps.download_audio import DownloadAudio
+from pipeline.steps.download_audio import DownloadAudio
+from pipeline.pipeline import Pipeline
 
 
 parser = argparse.ArgumentParser(
     description='Generate subtitles for a YouTube video.')
-parser.add_argument("-vurl",
-                    default=None,
+parser.add_argument("vurl",
                     type=str,
-                    help="YouTube video URL",
-                    nargs="?")
+                    help="YouTube video URL")
 
 args = parser.parse_args()
-urls = []
-if args.vurl:
-    urls.append(args.vurl)
-else:
-    url = input("Enter the YouTube video URL: ")
-    urls.append(url)
+
 
 input_kwargs = {
-    "urls": urls
+    "urls": [args.vurl]
 }
 
-steps = [
-    DownloadAudio()
-]
 
-for step in steps:
-    try:
-        step.process(input_kwargs)
-    except:
-        print("Error occurred in step: ", step)
+def main():
+    steps = [
+        DownloadAudio()
+    ]
+    pipeline = Pipeline(steps)
+    pipeline.run(input_kwargs)
+
+
+if __name__ == '__main__':
+    main()

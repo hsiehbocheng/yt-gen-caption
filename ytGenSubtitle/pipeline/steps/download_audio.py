@@ -1,4 +1,4 @@
-from steps.step import Step, StepException
+from .step import Step, StepException
 from yt_dlp import YoutubeDL
 
 
@@ -25,3 +25,4 @@ class DownloadAudio(Step):
                 ydl.download(urls)
         except:
             return StepException("Failed to download audio")
+        return filename
