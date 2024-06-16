@@ -3,6 +3,7 @@ asttokens==2.4.1
 av==12.1.0
 Brotli==1.1.0
 certifi==2024.6.2
+chardet==5.2.0
 charset-normalizer==3.3.2
 coloredlogs==15.0.1
 comm==0.2.2
@@ -44,6 +45,7 @@ ptyprocess==0.7.0
 pure-eval==0.2.2
 pycryptodomex==3.20.0
 Pygments==2.18.0
+pysrt==1.1.2
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2024.1

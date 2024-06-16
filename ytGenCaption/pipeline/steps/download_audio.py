@@ -53,7 +53,7 @@ class DownloadAudio(Step):
             with YoutubeDL(ydl_opts) as ydl:
                 info_dict = ydl.extract_info(urls[0], download=False)
                 filename = ydl.prepare_filename(info_dict).replace('.webm', '').replace('.mp4', '')
-                # ydl.download(urls)
+                ydl.download(urls)
                 temp_data = YT(filename, info_dict)
         except:
             return StepException("Failed to download audio")
