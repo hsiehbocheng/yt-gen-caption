@@ -1,8 +1,11 @@
 import argparse
+import os
+
 from pipeline.pipeline import Pipeline
 from pipeline.steps.download_audio import DownloadAudio
 from pipeline.steps.gen_caption import GenCaption
 
+os.makedirs('downloads', exist_ok=True)
 
 parser = argparse.ArgumentParser(
     description='Generate subtitles for a YouTube video.')

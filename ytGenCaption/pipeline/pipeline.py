@@ -7,10 +7,12 @@ class Pipeline:
         self.steps = steps
 
     def run(self, input_kwargs):
-        temp_data = {}
+        temp_data = None
         for step in self.steps:
-            try:
-                temp_data = step.process(input_kwargs, temp_data)
-            except:
-                print("Error occurred in step: ", step)
-                break
+            temp_data = step.process(input_kwargs, temp_data)
+
+            # try:
+            #     temp_data = step.process(input_kwargs, temp_data)
+            # except:
+            #     print("Error occurred in step: ", step)
+            #     break

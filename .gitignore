@@ -474,3 +474,7 @@ venv/
 *.mov
 *.m4a
 *.mp4
+
+captions/
+audios/
+downloads/
