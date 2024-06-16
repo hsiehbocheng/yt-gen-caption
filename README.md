@@ -8,6 +8,7 @@ This is a Porject for generating captions for YouTube videos using machine learn
 python 3.9
 yt_dlp
 faster_whisper
+pystr
 ```
 
 ### Quick Start
