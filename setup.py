@@ -12,7 +12,7 @@ from shutil import rmtree
 from setuptools import find_packages, setup, Command
 
 # Package meta-data.
-NAME = 'benson hsieh'
+NAME = 'yt-gen-caption'
 DESCRIPTION = 'Project that generates captions for videos using Whisper'
 URL = 'https://github.com/hsiehbocheng/yt-gen-caption'
 EMAIL = 'me@example.com'
