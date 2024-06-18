@@ -36,15 +36,6 @@ class GenCaption(Step):
                 vad_filter=True,
                 temperature=0.001
             )
-            # caption_filepath = temp_data.audio_filepath.replace('.mp3', '.txt')
-            # with open(caption_filepath, 'w') as f:
-            #     for segment in segments:
-            #         # Format the output string for each segment
-            #         output_text = f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}\n"
-            #         # Write to file
-            #         f.write(output_text)
-            #         # Print to console
-            #         print(output_text.strip())
             
             caption_filepath = temp_data.audio_filepath.replace('.mp3', '.srt')
             subtitles = pysrt.SubRipFile()
