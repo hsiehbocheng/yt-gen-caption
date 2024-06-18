@@ -6,7 +6,13 @@ from faster_whisper import WhisperModel
 
 def timestamp_to_seconds(timestamp):
     return timestamp.hours * 3600 + timestamp.minutes * 60 + timestamp.seconds + timestamp.milliseconds / 1000.0
-
+def seconds_to_srt_time(seconds):
+    """Convert seconds to SubRipTime format."""
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    seconds = int(seconds % 60)
+    milliseconds = int((seconds - int(seconds)) * 1000)
+    return pysrt.SubRipTime(hours, minutes, seconds, milliseconds)
 
 class GenCaption(Step):
     def process(self, input_kwargs, temp_data):
@@ -30,12 +36,28 @@ class GenCaption(Step):
                 vad_filter=True,
                 temperature=0.001
             )
-            caption_filepath = temp_data.audio_filepath.replace('.mp3', '.txt')
-            with open(caption_filepath, 'w') as f:
-                for segment in segments:
-                    # Format the output string for each segment
-                    output_text = f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}\n"
-                    # Write to file
-                    f.write(output_text)
-                    # Print to console
-                    print(output_text.strip())
+            # caption_filepath = temp_data.audio_filepath.replace('.mp3', '.txt')
+            # with open(caption_filepath, 'w') as f:
+            #     for segment in segments:
+            #         # Format the output string for each segment
+            #         output_text = f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}\n"
+            #         # Write to file
+            #         f.write(output_text)
+            #         # Print to console
+            #         print(output_text.strip())
+            
+            caption_filepath = temp_data.audio_filepath.replace('.mp3', '.srt')
+            subtitles = pysrt.SubRipFile()
+            for i, segment in enumerate(segments, start=1):
+                start_time = seconds_to_srt_time(segment.start)
+                end_time = seconds_to_srt_time(segment.end)
+                subtitle = pysrt.SubRipItem(index=i, start=start_time, end=end_time, text=segment.text)
+                
+                # Add subtitle to the list
+                subtitles.append(subtitle)
+
+                # Optional: print subtitle
+                print(f"[{segment.start:.2f}s -> {segment.end:.2f}s] {segment.text}")
+
+            # Save subtitles to file
+            subtitles.save(caption_filepath, encoding='utf-8')
