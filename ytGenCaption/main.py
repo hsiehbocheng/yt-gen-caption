@@ -27,7 +27,7 @@ def main():
         GenCaption(),
     ]
     pipeline = Pipeline(steps)
-    pipeline.run(input_kwargs)
+    pipeline.run(input_kwargs=input_kwargs)
 
 
 if __name__ == '__main__':
