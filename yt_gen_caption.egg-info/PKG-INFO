@@ -1,0 +1,52 @@
+Metadata-Version: 2.1
+Name: yt-gen-caption
+Version: 0.1.0
+Summary: Project that generates captions for videos using Whisper
+Home-page: https://github.com/hsiehbocheng/yt-gen-caption
+Author: benson hsieh
+Author-email: me@example.com
+License: MIT
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Requires-Python: >=3.9.0
+Description-Content-Type: text/markdown
+Requires-Dist: faster_whisper
+Requires-Dist: yt_dlp
+Requires-Dist: pystr
+
+
+### ytGenCaption
+
+This is a Porject for generating captions for YouTube videos using machine learning.</p>
+
+### Requirements
+
+```
+python 3.9
+yt_dlp
+faster_whisper
+pystr
+```
+
+### Quick Start
+1. Clone the repository
+   ```bash
+   git clone https://github.com/hsiehbocheng/yt-gen-caption.git
+   ```
+2. Create a virtual environment(optional)
+    ```bash
+    python3.9 -m venv venv
+    source venv/bin/activate
+    ```
+3. Install the requirements
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Run the script
+    ```basg
+    python ytGenCaption/main.py -vurl your_yt_url
+    ```
