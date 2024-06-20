@@ -37,16 +37,16 @@ pysrt
    
    Run the script with the following command, replacing your_yt_url with the URL of the YouTube video you want to caption:
     ```bash
-    python ytGenCaption/main.py -vurl your_yt_url
+    python ytGenCaption/main.py -url your_yt_url
     ```
 
 ### **Command-Line Arguments**:
-- `-vurl`: Specify the YouTube video URL for which you want to generate captions.
+- `-url`: Specify the YouTube video URL for which you want to generate captions.
 - `-model_size_or_path`: Set the model size or provide a path to a specific model. Default is "small".
 - `-temperatures`: Adjust the temperature to control the randomness during model inference. Default is 0.001.
 - `-initial_prompt`: Provide an optional initial prompt for the model to influence the beginning of the captions.
 
 **example**:
 ```bash
-python ytGenCaption/main.py -vurl "https://www.youtube.com/watch?v=LUHGvz8skoo" -model_size_or_path "small" -temperatures 0.001 -initial_prompt "蔡冠雙頭喜劇演員"
+python ytGenCaption/main.py -url "https://www.youtube.com/watch?v=LUHGvz8skoo" -model_size_or_path "small" -temperatures 0.001 -initial_prompt "蔡冠雙頭喜劇演員"
 ```
