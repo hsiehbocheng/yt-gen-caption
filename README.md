@@ -18,10 +18,10 @@ pysrt
    ```
 2. **Create a virtual environment(optional)**
     1. python venv
-      ```bash
-      python3.9 -m venv venv
-      source venv/bin/activate
-      ```
+         ```bash
+         python3 -m venv venv
+         source venv/bin/activate
+         ```
    2. install ffmpeg (Ubuntu)
       ```bash
       sudo apt update
@@ -34,6 +34,7 @@ pysrt
    pip install -r requirements.txt
    ```
 4. **Run the script**
+   
    Run the script with the following command, replacing your_yt_url with the URL of the YouTube video you want to caption:
     ```bash
     python ytGenCaption/main.py -vurl your_yt_url
