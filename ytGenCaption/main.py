@@ -9,7 +9,7 @@ os.makedirs('downloads', exist_ok=True)
 
 parser = argparse.ArgumentParser(
     description='Generate subtitles for a YouTube video.')
-parser.add_argument("-vurl",
+parser.add_argument("-url",
                     type=str,
                     help="YouTube video URL")
 parser.add_argument("-model_size_or_path",
@@ -38,7 +38,7 @@ args = parser.parse_args()
 
 
 input_kwargs = {
-    "urls": [args.vurl],
+    "urls": [args.url],
     "model_size_or_path": args.model_size_or_path,
     "temperatures": [args.temperatures],
     "initial_prompt": args.initial_prompt,
