@@ -1,3 +1,4 @@
+import os
 import pysrt
 
 from .step import Step, StepException
@@ -17,8 +18,8 @@ def seconds_to_srt_time(seconds):
 class GenCaption(Step):
     def process(self, input_kwargs, temp_data):
         audio_filename = temp_data.audio_filepath
-
-        if temp_data.caption_filepath:
+        caption_filepath = temp_data.caption_filepath
+        if caption_filepath and os.path.exists(caption_filepath):
             captions = pysrt.open(temp_data.caption_filepath)
             all_text = '\n'.join(
                 "[%.2fs -> %.2fs] %s" % (
