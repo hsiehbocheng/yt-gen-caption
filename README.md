@@ -48,5 +48,10 @@ pysrt
 
 **example**:
 ```bash
-python ytGenCaption/main.py -url "https://www.youtube.com/watch?v=LUHGvz8skoo" -model_size_or_path "small" -temperatures 0.001 -initial_prompt "蔡冠雙頭喜劇演員"
+python ytGenCaption/main.py \
+  -url "https://www.youtube.com/watch?v=LUHGvz8skoo" \
+  -model_size_or_path "small" \
+  -temperatures 0.001 \
+  -initial_prompt "蔡冠雙頭喜劇演員漫才"
+
 ```
