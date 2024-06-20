@@ -30,11 +30,12 @@ class GenCaption(Step):
             print(all_text)
         else:
             print("No captions found for this video.\n Use Whisper to generate captions.")
-            model = WhisperModel('small')
+            model = WhisperModel(input_kwargs.get('model_size_or_path', 'small'))
             segments, _ = model.transcribe(
                 audio_filename,
                 vad_filter=True,
-                temperature=0.001
+                temperature=input_kwargs.get('temperature', 0.001),
+                initial_prompt=input_kwargs.get('initial_prompt', ''),
             )
             
             caption_filepath = temp_data.audio_filepath.replace('.mp3', '.srt')
